@@ -1,0 +1,12 @@
+{
+  "development": {
+    "PORT" : 8080,
+    "facebook_app_id": "facebook_dummy_dev_app_id",
+    "facebook_app_secret": "facebook_dummy_dev_app_secret"
+  },
+  "production": {
+    "PORT" : 80,
+    "facebook_app_id": "facebook_dummy_prod_app_id",
+    "facebook_app_secret": "facebook_dummy_prod_app_secret"
+  }
+}

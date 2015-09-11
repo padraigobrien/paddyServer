@@ -2,7 +2,12 @@ var express = require('express'),
     bodyParser      = require('body-parser'),
     methodOverride  = require('method-override'),
     experiences        = require('./routes/experiences'),
+    common = require('./common'),
     app = express();
+
+var config = common.config();
+var port = config.PORT;
+console.log(port);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -20,7 +25,7 @@ app.all('*', function(req, res, next) {
 app.get('/experiences', experiences.findAll);
 app.get('/experiences/:id', experiences.findById);
 
-app.set('port', process.env.PORT || 5000);
+app.set('port', port || 5000);
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
