@@ -1,11 +1,23 @@
-var experiences = [
-    {id:0 , title:"Walking tour of the metals", guide:"Cian O'Cuilleanain", duration :"120", description: "be amazed at the beutiful walking trail of the metals", image: 'theMetals.jpg'},
-    {id:1 , title:"Tour of the DLR Lexicon", guide:"Padraig OBrien", duration:"30", description: "While this  building has been polarising to the local community it has to be experienced." , image :'theLibrary.jpg'},
-    {id:2 , title:"The west pier", guide:"Niall O'Cuilleanain", duration:"120", description: "Lose yourself in this lovely walk, wear a big cote in the winter though", image : 'theWestpier.jpg'}
-];
+var aws         = require('aws-sdk');
+
+aws.config.update({accessKeyId: process.env.AWS_ACCESS_KEY_ID, secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY});
+aws.config.update({region: 'eu-west-1'});
 
 exports.findAll = function (req, res, next) {
-    res.send(experiences);
+    var experienceData;
+    var params = {
+        TableName : "experiences"
+    };
+
+    var db = new aws.DynamoDB();
+    db.scan(params, function(err, data) {
+        if (err) {
+            console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+        } else {
+            experienceData = JSON.stringify(data);
+            res.send(experienceData);
+        }
+    });
 };
 
 exports.findById = function (req, res, next) {
