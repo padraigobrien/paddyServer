@@ -43,8 +43,7 @@ exports.findById = function (req, res, next) {
 
     db.query(params, function(err, data) {
         if (err) {
-            console.log (err)
-          console.log("Sad Trombone")
+            console.log (err);
         } else {
             var items = data.Items.map(unmarshalItem);
             res.send(items);

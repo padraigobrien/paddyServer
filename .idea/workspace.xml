@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b7872163-b7f2-44cd-8c05-320554260149" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/experiences.js" afterPath="$PROJECT_DIR$/routes/experiences.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="paddyServer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,9 +39,11 @@
       <file leaf-file-name="experiences.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/experiences.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55026454" vertical-offset="213" max-vertical-offset="885">
-              <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
-              <folding />
+            <state vertical-scroll-proportion="0.13227513" vertical-offset="60" max-vertical-offset="660">
+              <caret line="23" column="27" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="27" />
+              <folding>
+                <element signature="e#308#669#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -267,7 +267,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="285">
           <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-          <folding />
+          <folding>
+            <element signature="e#308#669#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -312,9 +314,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/experiences.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55026454" vertical-offset="213" max-vertical-offset="885">
-          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
-          <folding />
+        <state vertical-scroll-proportion="0.13227513" vertical-offset="60" max-vertical-offset="660">
+          <caret line="23" column="27" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="27" />
+          <folding>
+            <element signature="e#308#669#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
