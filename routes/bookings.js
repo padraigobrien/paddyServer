@@ -5,6 +5,14 @@ aws.config.update({accessKeyId: process.env.AWS_ACCESS_KEY_ID, secretAccessKey: 
 aws.config.update({region: 'eu-west-1'});
 
 exports.createNew = function (req, res, next) {
+  var myUserId = req.body.myUserId;
+  var guideName = req.body.guideName;
+  var experienceDate = req.body.experienceDate;
+  var guideContactNumber = req.body.guideContactNumber;
+  var experienceTitle = req.body.experienceTitle;
+  var experiencePrice = req.body.experiencePrice;
+  var experienceID = req.body.experienceID;
+
 
   var db = new aws.DynamoDB();
 
@@ -12,13 +20,14 @@ exports.createNew = function (req, res, next) {
     {
       "TableName":"bookings",
       "Item":{
-        "id": {"S":"1"},
-        "experienceDate":{"S":"01 Jan 2012"},
-        "guideName":{"S":"Podge O'Brien"},
-        "guideContactNumber":{"N":"0868877056"},
-        "experienceTitle":{"S":"Walk the metals"},
-        "experiencePrice":{"S":"€50"},
-        "experienceID":{"N":"1"}
+        "id": {"S":"7"},
+        "UserID" : { "S":myUserId},
+        "experienceDate":{"S":experienceDate},
+        "guideName":{"S": guideName },
+        "guideContactNumber":{"N":guideContactNumber},
+        "experienceTitle":{"S":experienceTitle},
+        "experiencePrice":{"S":experiencePrice},
+        "experienceID":{"N":experienceID}
       }
     }, function(err, data){
       if (err) {
@@ -28,5 +37,5 @@ exports.createNew = function (req, res, next) {
       }
     }
     );
-  console.log(" Item are succesfully intest in table ..................");
+  //console.log(" Item are succesfully intest in table ..................");
 };
