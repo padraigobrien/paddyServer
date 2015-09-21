@@ -2,6 +2,7 @@ var express = require('express'),
     bodyParser      = require('body-parser'),
     methodOverride  = require('method-override'),
     experiences        = require('./routes/experiences'),
+    bookings = require('./routes/bookings'),
     common = require('./common'),
     app = express();
 
@@ -24,6 +25,7 @@ app.all('*', function(req, res, next) {
 
 app.get('/experiences', experiences.findAll);
 app.get('/experiences/:id', experiences.findById);
+app.put('/bookings', bookings.createNew);
 
 app.set('port', port || 5000);
 
