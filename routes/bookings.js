@@ -12,7 +12,7 @@ exports.createNew = function (req, res, next) {
   var experienceTitle = req.body.experienceTitle;
   var experiencePrice = req.body.experiencePrice;
   var experienceID = req.body.experienceID;
-
+  var image = req.body.image;
 
   var db = new aws.DynamoDB();
 
@@ -20,22 +20,72 @@ exports.createNew = function (req, res, next) {
     {
       "TableName":"bookings",
       "Item":{
-        "id": {"S":"7"},
-        "UserID" : { "S":myUserId},
+        "id": {"S":experienceID.toString()},
+        "UserID" : { "S":myUserId.toString()},
         "experienceDate":{"S":experienceDate},
         "guideName":{"S": guideName },
         "guideContactNumber":{"N":guideContactNumber},
         "experienceTitle":{"S":experienceTitle},
         "experiencePrice":{"S":experiencePrice},
-        "experienceID":{"N":experienceID}
+        "experienceID":{"N":experienceID.toString()},
+        "image":{"S":image}
       }
     }, function(err, data){
       if (err) {
         console.log(err); // an error occurred
       } else {
+        console.log("successful post");
         console.log(data); // successful response
       }
     }
     );
   //console.log(" Item are succesfully intest in table ..................");
+};
+
+exports.findAll = function (req, res, next) {
+  var params = {
+    TableName : "bookings"
+  };
+  var db = new aws.DynamoDB();
+
+  db.scan(params, function(err, data) {
+    if (err) {
+      console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+    } else {
+      var items = data.Items.map(unmarshalItem);
+      res.send(items);
+    }
+  });
+};
+
+exports.findById = function (req, res, next) {
+  var UserID = req.params.userID;
+console.log(UserID);
+  var db = new aws.DynamoDB();
+  var params = {
+    TableName : 'bookings',
+    IndexName : 'UserID-index',
+    KeyConditions :
+    {
+      "UserID" :
+      {
+        "AttributeValueList" : [
+          {
+            "S" : UserID
+          }
+        ],
+        "ComparisonOperator" : "EQ"
+      }
+    }
+  }
+
+  db.query(params, function(err, data) {
+    if (err) {
+      console.log (err);
+    } else {
+      var items = data.Items.map(unmarshalItem);
+      res.send(items);
+    }
+  });
+
 };

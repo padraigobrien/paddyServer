@@ -19,13 +19,16 @@ app.use(methodOverride());      // simulate DELETE and PUT
 // CORS (Cross-Origin Resource Sharing) headers to support Cross-site HTTP requests
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT");
+    res.header("Access-Control-Allow-Headers", "Content-Type, X-Requested-With");
     next();
 });
 
 app.get('/experiences', experiences.findAll);
 app.get('/experiences/:id', experiences.findById);
 app.put('/bookings', bookings.createNew);
+app.get('/bookings/', bookings.findAll);
+app.get('/bookings/:userID', bookings.findById);
 
 app.set('port', port || 5000);
 
